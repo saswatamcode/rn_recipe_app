@@ -4,28 +4,27 @@ import styled from "styled-components";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function App() {
-
-  const Recipes = [
+  const recipes = [
     {
-      name: "Pad Thai",
-      info: "45 min | 2 servings",
-      image: require("./assets/img/salad.jpeg")
+      name: "Caesar Salad",
+      info: "20 min | 2 servings",
+      image: require("./assets/img/caesar.jpg"),
     },
     {
-      name: "Pad Thai",
+      name: "Chicken Salad",
       info: "45 min | 2 servings",
-      image: require("./assets/img/salad.jpeg")
+      image: require("./assets/img/chicken.jpeg"),
     },
     {
-      name: "Pad Thai",
-      info: "45 min | 2 servings",
-      image: require("./assets/img/salad.jpeg")
+      name: "Vinaigrette",
+      info: "30 min | 2 servings",
+      image: require("./assets/img/salad.jpeg"),
     },
-  ]
+  ];
   return (
     <Container>
       <StatusBar barStyle="light-content" />
-      <RecipeBackground source={require("./assets/img/spish.jpeg")}>
+      <RecipeBackground source={require("./assets/img/mainsalad.jpeg")}>
         <SafeAreaView>
           <MenuBar>
             <Back>
@@ -60,7 +59,24 @@ export default function App() {
           Recipes
         </Text>
         <Text dark>18 Recipes Available</Text>
-        <Recipes></Recipes>
+        <Recipes>
+          {recipes.map((recipe, index) => {
+            return (
+              <Recipe key={index}>
+                <RecipeImage source={recipe.image} />
+                <RecipeInfo>
+                  <Text dark bold>
+                    {recipe.name}
+                  </Text>
+                  <Text dark small>
+                    {recipe.info}
+                  </Text>
+                </RecipeInfo>
+                <AntDesign name="hearto" size={18} color="#000" />
+              </Recipe>
+            );
+          })}
+        </Recipes>
       </RecipesContainer>
     </Container>
   );
@@ -144,4 +160,19 @@ const Recipes = styled.View`
   margin-top: 18px;
 `;
 
-const Recipe = styled.View``;
+const Recipe = styled.View`
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 28px;
+`;
+
+const RecipeImage = styled.Image`
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+`;
+
+const RecipeInfo = styled.View`
+  flex: 1;
+  margin-left: 12px;
+`;
