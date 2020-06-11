@@ -1,4 +1,17 @@
 {
-  "name": "ShoppingList",
-  "displayName": "ShoppingList"
+  "name": "recipeui",
+  "displayName": "Recipi",
+  "expo": {
+    "name": "recipeui",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
 }
